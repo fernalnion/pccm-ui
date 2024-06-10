@@ -1,0 +1,37 @@
+<div nz-row>
+  <div nz-col nzSpan="24">
+    <nz-card nzTitle="Category" [nzExtra]="extraTemplate">
+      <nz-table #basicTable [nzData]="catogory">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Emission Factor</th>
+            <th>Unit</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of basicTable.data">
+            <td>{{ user.category }}</td>
+            <td>{{ user.emissionFactors }}</td>
+            <td>{{ user.unit }}</td>
+            <td class="actions">
+                <button nz-button nzType="default" nzDanger nzShape="circle">
+                  <span nz-icon nzType="minus"></span>
+                </button>
+                <button nz-button nzType="primary" nzShape="circle">
+                  <span nz-icon nzType="edit"></span>
+                </button>
+              </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
+</div>
+
+<ng-template #extraTemplate>
+  <button nz-button nzType="primary" nzShape="circle">
+    <span nz-icon nzType="plus"></span>
+  </button>
+</ng-template>
