@@ -1,0 +1,35 @@
+<div nz-row>
+  <div nz-col nzSpan="24">
+    <nz-card nzTitle="Roles" [nzExtra]="extraTemplate">
+      <nz-table #basicTable [nzData]="roles">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of basicTable.data">
+            <td>{{ user.name }}</td>
+            <td>{{ user.description }}</td>
+            <td class="actions">
+                <button nz-button nzType="default" nzDanger nzShape="circle">
+                  <span nz-icon nzType="minus"></span>
+                </button>
+                <button nz-button nzType="primary" nzShape="circle">
+                  <span nz-icon nzType="edit"></span>
+                </button>
+              </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
+</div>
+
+<ng-template #extraTemplate>
+  <button nz-button nzType="primary" nzShape="circle">
+    <span nz-icon nzType="plus"></span>
+  </button>
+</ng-template>

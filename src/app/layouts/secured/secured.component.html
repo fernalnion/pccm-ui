@@ -1,0 +1,73 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+    <div class="logo">PCCM</div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/', 'dashboard']">
+          <span nz-icon nzType="appstore"></span>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/', 'activity']">
+          <span nz-icon nzType="user"></span>
+          <span>Activity</span>
+        </a>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Settings" nzIcon="user" nzMatchRouter>
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'settings', 'roles']">
+              <span nz-icon nzType="appstore"></span>
+              <span>Roles</span>
+            </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'settings', 'users']">
+              <span nz-icon nzType="user"></span>
+              <span>Users</span>
+            </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'settings', 'category']">
+              <span nz-icon nzType="user"></span>
+              <span>Emis. Category</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout class="right-layout">
+    <nz-header>
+      <h3 class="title">Personal Carbon Credit Management</h3>
+      <ul nz-menu style="float: right">
+        <li nz-menu-item>
+          <button
+            nz-button
+            nz-dropdown
+            [nzDropdownMenu]="usermenu"
+            nzShape="circle"
+          >
+            <span nz-icon nzType="user"></span>
+          </button>
+          <nz-dropdown-menu #usermenu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item><span nz-icon nzType="user"></span> Profile</li>
+              <li nz-menu-item (click)="logout()">
+                <span nz-icon nzType="logout"></span> Logout
+              </li>
+            </ul>
+          </nz-dropdown-menu>
+        </li>
+      </ul>
+    </nz-header>
+    <nz-content>
+      <app-breadcrumbs></app-breadcrumbs>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>Personal Carbon Credit Management @{{ year }}</nz-footer>
+  </nz-layout>
+</nz-layout>

@@ -1,0 +1,30 @@
+<div nz-row>
+  <div nz-col nzSpan="24">
+    <nz-card nzTitle="Activities" [nzExtra]="extraTemplate">
+      <nz-table #basicTable [nzData]="carbonFootprint">
+        <thead>
+          <tr>
+            <th>Activity Type</th>
+            <th>Utilized Amount</th>
+            <th>Carbon Emission</th>
+            <th>Credits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let footprint of basicTable.data">
+            <td>{{ footprint.activityType }}</td>
+            <td>{{ footprint.utilizedAmount | number : "1.3-3" }}</td>
+            <td>{{ footprint.carbonEmissions | number : "1.3-3" }}</td>
+            <td>{{ footprint.credits | number : "1.3-3" }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
+</div>
+
+<ng-template #extraTemplate>
+  <button nz-button nzType="primary" nzShape="circle" (click)="download()">
+    <span nz-icon nzType="download"></span>
+  </button>
+</ng-template>
